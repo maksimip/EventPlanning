@@ -1,0 +1,26 @@
+﻿@model WebUI.Models.EventModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Ajax.BeginForm("CreateEventTitle", "Admin", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "btnAddField" }))
+{
+    @Html.TextBoxFor(m => m.TitleEvent)<br/>
+    @Html.TextBoxFor(m => m.StartDateTime)<br/>
+    <button type="submit">Create Event</button>
+}
+
+<div>
+    @if (Model.IdEvent == 0)
+    {
+        <button disabled="disabled">Add Field</button>
+    }
+    else
+    {
+        <button id="btnAddField">Add Field</button>
+    }
+
+</div>

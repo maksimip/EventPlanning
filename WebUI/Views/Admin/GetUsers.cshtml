@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Domain.Entities.User>
+@{
+    ViewBag.Title = "GetUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>GetUsers</h2>
+
+<table>
+    <tr>
+        <th>IdUser</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tbody id="tUsers">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.IdUser</td>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@using (Ajax.BeginForm("AddUser", "Admin", new AjaxOptions() {HttpMethod = "POST", UpdateTargetId = "tUsers" }))
+{
+    @Html.TextBox("Name")<br/>
+    @Html.TextBox("Email")<br/>
+    <div>
+        <button type="submit">AddUser</button>
+    </div>
+
+}

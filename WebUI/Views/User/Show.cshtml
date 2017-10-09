@@ -1,0 +1,35 @@
+﻿@model WebUI.Models.EventModel
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Model.TitleEvent</h2>
+<span>Начало : @Model.StartDateTime</span>
+
+<table class="table">
+    <thead class="thead-default">
+    <tr>
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    </thead>
+    <tbody id="tableFields">
+    @if (Model.Fields != null)
+    {
+        foreach (var field in Model.Fields)
+        {
+            <tr>
+                <td>@Html.DisplayFor(f => field.Title)</td>
+                <td>@Html.DisplayFor(f => field.Description)</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+<div class="form-group">
+        @Html.ActionLink("Регистрация", "Registration", new { Model.IdEvent }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Вернуться к списку мероприятий", "Index")
+</div>
+
+

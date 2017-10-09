@@ -1,0 +1,85 @@
+﻿@model WebUI.Models.EventModel
+@{
+    ViewBag.Title = "CreateEvent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CreateEvent</h2>
+
+@using (Ajax.BeginForm("CreateEvent", "Admin", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "btnAddField" }, 
+                        new{@role="form", @class="form-group"}))
+{
+    <div class="form-group">
+        <label for="txbTitleEvent">Название мероприятия</label>
+        @Html.TextBoxFor(m => m.TitleEvent, new{@class="form-control", @id="txbTitleEvent",
+                                                @placeholder ="введите название мероприятия"})
+    </div>
+    <div class="form-group">
+        <label for="txbStartEvent">Дата и время начала</label>
+        @Html.TextBoxFor(m => m.StartDateTime, new{@class="form-control", @id="txbStartEvent",
+            @placeholder ="введите дату и время начала мероприятия"})
+        <small class="form-text text-muted">например: 10.10.17 10:00 </small>
+    </div>
+
+    <div>
+        @if (Model.IdEvent == 0)
+        {
+            <button type="submit" class="btn btn-primary">Создать мероприятие</button>
+        }
+        else
+        {
+            <button disabled="disabled" type="submit" class="btn btn-primary">Создать мероприятие</button>
+        }
+    </div>
+    
+}
+
+<table class="table">
+    <thead class="thead-default">
+    <tr>
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    </thead>
+    <tbody id="tableFields">
+    @if (Model.Fields != null)
+    {
+        foreach (var field in Model.Fields)
+        {
+            <tr>
+                <td>@Html.DisplayFor(f => field.Title)</td>
+                <td>@Html.DisplayFor(f => field.Description)</td>
+            </tr>
+        }
+    }
+    </tbody>
+        @using (Ajax.BeginForm("AddEventField", "Admin", new AjaxOptions(){ HttpMethod = "POST", UpdateTargetId = "tableFields" },
+                                    new{@role="form", @class="form-group"}))
+            {
+                @Html.TextBoxFor(m => m.IdEvent, new{@hidden="false"})
+                @Html.TextBoxFor(m => m.TitleEvent, new { @hidden = "false" })
+                @Html.TextBoxFor(m => m.StartDateTime, new { @hidden = "false" })
+                <tfoot>
+                <tr>
+                    <td>
+                        @Html.TextBox("titleField", null, new { @class = "form-control", @placeholder = "заголовок поля" })
+                    </td>
+                    <td>
+                        @Html.TextBox("descriptionField", null, new { @class = "form-control", @placeholder = "описание поля" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (Model.IdEvent == 0)
+                        {
+                            <button disabled="disabled" type="submit" class="btn btn-secondary">Добавить поле</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-secondary">Добавить поле</button>
+                        }
+                    </td>
+                </tr>
+                </tfoot>
+        }
+</table>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Domain.Entities.EventTitle>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead class="thead-default">
+    <tr>
+        <th>Название</th>
+        <th>Начало проведения</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Title, "Show", new{item.IdEvent})</td>
+                    <td class="text-left">@item.StartDateTime</td>
+                    <td>@Html.ActionLink("Регистрация", "Registration", new{item.IdEvent})</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
