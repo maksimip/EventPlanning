@@ -9,6 +9,9 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    /// <summary>
+    /// Администраторская часть
+    /// </summary>
     public class AdminController : Controller
     {
         private IFieldEventRepository _repositoryFields;
@@ -21,18 +24,20 @@ namespace WebUI.Controllers
             _titleRepository = eventTitleRepository;
         }
 
-        // GET: Admin
-        public ActionResult Index()
-        {
-            return View(new EventModel());
-        }
-
+        /// <summary>
+        /// отображние страницы для создания нового мероприятия
+        /// </summary>
+        /// <returns></returns>
         public ActionResult CreateEvent()
         {
             return View(new EventModel());
         }
         
-
+        /// <summary>
+        /// создание нового мероприятия
+        /// </summary>
+        /// <param name="eventModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult CreateEvent(EventModel eventModel)
         {
@@ -50,6 +55,13 @@ namespace WebUI.Controllers
             return PartialView(eventModel);
         }
 
+        /// <summary>
+        /// добавление полей для мероприятия
+        /// </summary>
+        /// <param name="eventModel"></param>
+        /// <param name="titleField"></param>
+        /// <param name="descriptionField"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddEventField(EventModel eventModel, string titleField, string descriptionField)
         {

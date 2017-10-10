@@ -49,13 +49,16 @@
   <ItemGroup>
     <Compile Include="Abstract\IEventTitleRepository.cs" />
     <Compile Include="Abstract\IFieldEventRepository.cs" />
+    <Compile Include="Abstract\IConfirmsRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
+    <Compile Include="Concrete\EFConfirmRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEventTitleRepository.cs" />
     <Compile Include="Concrete\EFFieldEventRepository.cs" />
     <Compile Include="Concrete\EFUserRepository.cs" />
     <Compile Include="Entities\EventTitle.cs" />
     <Compile Include="Entities\FieldEvent.cs" />
+    <Compile Include="Entities\RegistrationConfirmed.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

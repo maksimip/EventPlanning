@@ -13,8 +13,8 @@ namespace Domain.Entities
     {
         [Key]
         public int IdField { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; }//наименование поля
+        public string Description { get; set; }//описание поля
         public int IdEvent { get; set; }
     }
 }

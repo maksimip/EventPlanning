@@ -1,0 +1,29 @@
+﻿@model WebUI.Models.EventModel
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Регистрация на @Model.TitleEvent</h2>
+<span>@Model.StartDateTime</span>
+
+@using (Html.BeginForm("Registration", "User", FormMethod.Post, new {@role="form"}))
+{
+    @Html.TextBoxFor(e => e.IdEvent, new {@hidden="false"})
+    @Html.TextBoxFor(e => e.TitleEvent, new { @hidden = "false" })
+    @Html.TextBoxFor(e => e.StartDateTime, new { @hidden = "false" })
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="txbUserName" class="col-form-label">Имя</label>
+            @Html.TextBox("UserName",null, new {id="txbUserName", @placeholder="Введите ваше имя", @class="form-control"})
+        </div>
+        <div class="form-group col-md-6">
+            <label for="txbUserEmail" class="col-form-label">Email</label>
+            @Html.TextBox("UserEmail", null, new { id = "txbUserEmail", @placeholder = "Введите email", @type="email", @class = "form-control"})
+        </div>
+        <div class="form-group">
+            <button class="btn btn-secondary" type="submit" >Регистрация</button>
+            @Html.ActionLink("Вернуться к списку мероприятий", "Index")
+        </div>
+    </div>
+}

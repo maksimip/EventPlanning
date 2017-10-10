@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>CreateEvent</h2>
+@Html.ActionLink("Главная", "Index", "Home")<br/>
+<h2>Создание мероприятия</h2>
 
 @using (Ajax.BeginForm("CreateEvent", "Admin", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "btnAddField" }, 
                         new{@role="form", @class="form-group"}))

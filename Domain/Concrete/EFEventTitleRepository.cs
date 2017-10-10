@@ -8,6 +8,9 @@ using Domain.Entities;
 
 namespace Domain.Concrete
 {
+    /// <summary>
+    /// преднозначен для работы с таблицей EventTitles в БД EventPlanning
+    /// </summary>
     public class EFEventTitleRepository : IEventTitleRepository
     {
         private EFDbContext context = new EFDbContext();

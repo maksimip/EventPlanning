@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Event Planning</h2>
+<span>уровень junior</span>
+
+<div class="form-group">
+    @Html.ActionLink("Администраторская часть", "CreateEvent", "Admin")<br/>
+    @Html.ActionLink("Пользовательская часть", "Index", "User")
+</div>
+

@@ -8,6 +8,9 @@ using Domain.Entities;
 
 namespace Domain.Concrete
 {
+    /// <summary>
+    /// преднозначен для работы с таблицей EventFields в БД EventPlanning
+    /// </summary>
     public class EFFieldEventRepository : IFieldEventRepository
     {
         private EFDbContext context = new EFDbContext();

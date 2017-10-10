@@ -13,7 +13,7 @@ namespace Domain.Entities
     {
         [Key]
         public int IdEvent { get; set; }
-        public string Title { get; set; }
-        public DateTime StartDateTime { get; set; }
+        public string Title { get; set; } //наименование мероприятия
+        public DateTime StartDateTime { get; set; } // начало мероприятия
     }
 }

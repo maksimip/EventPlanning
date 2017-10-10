@@ -8,6 +8,9 @@ using Domain.Entities;
 
 namespace Domain.Concrete
 {
+    /// <summary>
+    /// преднозначен для работы с таблицей Users в БД EventPlanning
+    /// </summary>
     public class EFUserRepository : IUserRepository
     {
         private EFDbContext _context = new EFDbContext();

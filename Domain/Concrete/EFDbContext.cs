@@ -8,6 +8,9 @@ using Domain.Entities;
 
 namespace Domain.Concrete
 {
+    /// <summary>
+    /// создание доступа к БД EventPlanning
+    /// </summary>
     public class EFDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
@@ -15,5 +18,7 @@ namespace Domain.Concrete
         public DbSet<EventTitle> EventTitles { get; set; }
 
         public DbSet<FieldEvent> EventFields { get; set; }
+
+        public DbSet<RegistrationConfirmed> Confirms { get; set; }
     }
 }

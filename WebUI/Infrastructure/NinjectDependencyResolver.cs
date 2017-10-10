@@ -34,6 +34,7 @@ namespace WebUI.Infrastructure
             _kernel.Bind<IUserRepository>().To<EFUserRepository>();
             _kernel.Bind<IEventTitleRepository>().To<EFEventTitleRepository>();
             _kernel.Bind<IFieldEventRepository>().To<EFFieldEventRepository>();
+            _kernel.Bind<IConfirmsRepository>().To<EFConfirmRepository>();
         }
     }
 }
